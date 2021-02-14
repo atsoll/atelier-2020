@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="atelier2020" ng-controller="ctrl" data-ng-init="init()">
+  <head>
+    <meta charset="utf-16">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js" integrity="sha512-90vH1Z83AJY9DmlWa8WkjkV79yfS2n2Oxhsi2dZbIv0nC4E6m5AbH8Nh156kkM7JePmqD6tcZsfad1ueoaovww==" crossorigin="anonymous"></script>
+    <!--angular setup-->
+    <!--angular setup-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular-animate.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Slab:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="js/app.js"></script>
+    <link rel="stylesheet" href="./style/main.css"/>
+  </head>
+  <body>
+    <div id="overlay" ng-class="!model.entered? 'visible' : 'invisible'">
+      <div id="quote-text">
+        <p id="quote-container"></p>
+        <div id="attribution" ng-style="{opacity: !model.done_intro? '0' : '1'}">Christian Biet, 1952-2020</div>
+      </div>
+      <div class="button-container">
+        <div class="audio-blip" ng-style="{opacity: model.done_intro? '0' : '1'}" ng-class="model.started_intro? 'active-audio':'stopped-audio'" ng-click="play_intro()"></div>
+        <div class="button" ng-click="enter()" ng-style="{opacity: !model.done_intro? '0' : '1'}">Entrer</div>
+      </div>
+    </div>
+    <!--remove this click after dev-->
+    <div id="landing-page" ng-class="model.entered? 'visible' : 'invisible'" >
+      <div ng-repeat = "group in model.landing" class="target-cluster">
+        <img ng-init="img=group.img" ng-mouseover="img=group.red" ng-mouseleave="img=group.img" ng-src='{{img}}' ng-style="group.style" class="cluster-img"/>
+      </div>
+    </div>
+  </body>
+</html>
