@@ -2,13 +2,13 @@ var app = angular.module('atelier2020',['ngAnimate']);
 
 app.controller('ctrl', function($scope, $window, $document,  $location, $timeout) {
   $scope.model = {
-    entered: false,
+    entered: true ,//false, DEV ONLY
     started_intro: false,
     done_intro: false,
 
     landing: [{img: "assets/preville_cluster.png", red:"assets/preville_cluster_red.png", cur:"assets/preville_cluster.png", style:{left:'15%', top:'59%', height:'18.5vh'}},
-              {img: "assets/oedipe_cluster.png", red:"assets/oedipe_cluster_red.png", cur:"assets/oedipe_cluster.png", style:{left:'42%', top:'57%', height: '21.75vh'}},
-              {img: "assets/clairon_cluster.png", red:"assets/clairon_cluster_red.png", cur:"assets/clairon_cluster.png", style:{right:'15.5%', top:'58%', height:'18vh'}}
+              {img: "assets/oedipe_cluster.png", red:"assets/oedipe_cluster_red.png", cur:"assets/oedipe_cluster.png", style:{right:'15.5%', top:'57%', height: '18.5vh'}},
+              {img: "assets/clairon_cluster.png", red:"assets/clairon_cluster_red.png", cur:"assets/clairon_cluster.png", style:{left:'42%', top:'57.5%', height:'21.5vh'}}
             ]
   }
 
