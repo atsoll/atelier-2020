@@ -2,7 +2,7 @@ var app = angular.module('atelier2020',['ngAnimate']);
 
 app.controller('ctrl', function($scope, $window, $document,  $location, $timeout) {
   $scope.model = {
-    entered: true ,//false, DEV ONLY
+    entered: false,
     started_intro: false,
     done_intro: false,
 
