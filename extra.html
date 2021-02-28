@@ -1,0 +1,27 @@
+<span ng-if="code" class="code-extra">
+  <b>
+  <span ng-transclude></span>
+  <span uib-popover="{{code}}" popover-placement="{{position}}" popover-animantion="true"><sup><i class="extra-icon fa fa-code"></i><sup></span>
+  </b>
+</span>
+
+<span ng-if="image">
+  <b>
+  <span ng-transclude></span>
+  <span uib-popover-html="image" popover-placement="{{position}}" popover-animantion="true"><i class="extra-icon fa fa-eye"></i>
+  </b>
+</span>
+
+<span ng-if="quote">
+  <b>
+  <span ng-transclude></span>
+  <span uib-popover-html="quote"  popover-placement="{{position}}" popover-animantion="true"><sup><i class="extra-icon fa fa-book"></i><sup></span>
+  <b>
+</span>
+
+<span ng-if="recording" ng-transclude ng-click="audio.play()">
+  <b>
+  <span ng-transclude></span>
+  <sup><i class="extra-icon fa fa-volume-up"></i></sup>
+  <b>
+</span>

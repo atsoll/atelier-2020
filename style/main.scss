@@ -1,5 +1,6 @@
 
 $rcf-red: rgb(236,12,41);
+$rcf-gray: #e6e6e6;
 $standard-font:'Open Sans', sans-serif;
 $emphasis-font: 'Roboto Slab', serif;
 
@@ -9,6 +10,16 @@ html, body {
   overflow-x: hidden;
   font-family: $standard-font;
   margin:0px;
+  position:relative;
+}
+
+.view-wrapper {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  padding: 0px;
+  width: 100%;
+  height: 100%;
 }
 
 .audio-blip {
@@ -52,12 +63,27 @@ html, body {
 }
 
 .visible {
-  opacity: 1 !important;
+  opacity: 1;
+  z-index:99;
+  transition:  2s opacity 2s linear;
 }
 
 .invisible {
-  display: none;
-  opacity: 0
+  opacity: 0;
+  z-index:-1;
+  transition: visibility 0s 2s, opacity 2s linear;
+}
+
+.info-visible {
+  opacity: 1;
+  z-index:999;
+  transition:  opacity 0.5s linear;
+}
+
+.info-invisible {
+  opacity: 0;
+  z-index:-1;
+  transition: visibility 0s 0.5s, opacity 0.5s linear;
 }
 
 #overlay {
@@ -89,7 +115,7 @@ html, body {
      font-size: 30px;
      color: $rcf-red;
      opacity: 0;
-     transition: opacity 1.5s ease;
+     transition: opacity 1.5s linear;
      transition-delay: 0.25s;
    }
  }
@@ -103,7 +129,7 @@ html, body {
      margin:auto;
      background-color: white;
      color: black;
-     transition: opacity 1s ease;
+     transition: opacity 1s linear;
      transition-delay: 1.5s;
      padding: 15px;
      text-align: center;
@@ -131,13 +157,124 @@ html, body {
  -moz-background-size: 185%;
  -o-background-size: 185%;
   background-size: 185%;
-  transition: opacity 3s ease;
-  transition-delay: 1.5s;
   position: relative;
 
   .target-cluster {
     img {
       position: absolute
+    }
+  }
+}
+
+#cluster-overlay {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  z-index: 10;
+
+  #puzzle {
+    position: relative;
+  }
+
+  .audio-blip {
+    position: absolute;
+    bottom: 5%;
+    right: 50%
+  }
+
+  .figure {
+    position: absolute;
+  }
+
+  .image-stack {
+    position: relative;
+    img {
+      position: absolute;
+      top: 0px;
+      left:0px;
+      transition: opacity 0.5s ease;
+      height: 60vh;
+      width: auto;
+    }
+  }
+
+  #exit {
+    font-size: 45px;
+    color: $rcf-gray;
+    &:hover {
+      color:$rcf-red
+    }
+    position: absolute;
+    top:2%;
+    left:2%;
+    z-index:9999;
+  }
+}
+
+.step-info {
+  width: 45vw;
+  border: 2px solid $rcf-red;
+  background-color: $rcf-gray;
+  border-radius: 5px;
+  padding: 0.75%;
+  position: absolute;
+
+  a {
+    color: $rcf-red;
+
+    &:visited {
+      color: $rcf-red;
+    }
+  }
+}
+
+.info-section-text {
+  font-size: 14px;
+  .info-quote {
+    font-style: italic;
+  }
+}
+
+.extra-icon {
+  color: $rcf-red;
+  &:hover {
+    cursor: pointer;
+  }
+  font-size: 16px;
+  margin-top: 3px;
+}
+
+.code-extra {
+  .popover {
+    background-color: black;
+    .popover-body {
+      color:rgb(0,255,0);
+      font-family: monospace;
+    }
+  }
+  .bs-popover-bottom .arrow::after {
+    border-bottom-color: black;
+  }
+}
+
+.popover {
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+#true-images, #puzzle {
+  transition: opacity 5s linear;
+}
+
+#true-images {
+  position: relative;
+  .miniature {
+    position: absolute;
+    img {
+      height: 50vh;
+      width: auto
     }
   }
 }

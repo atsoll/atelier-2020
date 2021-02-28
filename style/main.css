@@ -4,6 +4,16 @@ html, body {
   overflow-x: hidden;
   font-family: "Open Sans", sans-serif;
   margin: 0px;
+  position: relative;
+}
+
+.view-wrapper {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  padding: 0px;
+  width: 100%;
+  height: 100%;
 }
 
 .audio-blip {
@@ -43,12 +53,27 @@ html, body {
   }
 }
 .visible {
-  opacity: 1 !important;
+  opacity: 1;
+  z-index: 99;
+  transition: 2s opacity 2s linear;
 }
 
 .invisible {
-  display: none;
   opacity: 0;
+  z-index: -1;
+  transition: visibility 0s 2s, opacity 2s linear;
+}
+
+.info-visible {
+  opacity: 1;
+  z-index: 999;
+  transition: opacity 0.5s linear;
+}
+
+.info-invisible {
+  opacity: 0;
+  z-index: -1;
+  transition: visibility 0s 0.5s, opacity 0.5s linear;
 }
 
 #overlay {
@@ -76,7 +101,7 @@ html, body {
   font-size: 30px;
   color: #ec0c29;
   opacity: 0;
-  transition: opacity 1.5s ease;
+  transition: opacity 1.5s linear;
   transition-delay: 0.25s;
 }
 #overlay .button-container {
@@ -89,7 +114,7 @@ html, body {
   margin: auto;
   background-color: white;
   color: black;
-  transition: opacity 1s ease;
+  transition: opacity 1s linear;
   transition-delay: 1.5s;
   padding: 15px;
   text-align: center;
@@ -111,12 +136,112 @@ html, body {
   -moz-background-size: 185%;
   -o-background-size: 185%;
   background-size: 185%;
-  transition: opacity 3s ease;
-  transition-delay: 1.5s;
   position: relative;
 }
 #landing-page .target-cluster img {
   position: absolute;
+}
+
+#cluster-overlay {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  z-index: 10;
+}
+#cluster-overlay #puzzle {
+  position: relative;
+}
+#cluster-overlay .audio-blip {
+  position: absolute;
+  bottom: 5%;
+  right: 50%;
+}
+#cluster-overlay .figure {
+  position: absolute;
+}
+#cluster-overlay .image-stack {
+  position: relative;
+}
+#cluster-overlay .image-stack img {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  transition: opacity 0.5s ease;
+  height: 60vh;
+  width: auto;
+}
+#cluster-overlay #exit {
+  font-size: 45px;
+  color: #e6e6e6;
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  z-index: 9999;
+}
+#cluster-overlay #exit:hover {
+  color: #ec0c29;
+}
+
+.step-info {
+  width: 45vw;
+  border: 2px solid #ec0c29;
+  background-color: #e6e6e6;
+  border-radius: 5px;
+  padding: 0.75%;
+  position: absolute;
+}
+.step-info a {
+  color: #ec0c29;
+}
+.step-info a:visited {
+  color: #ec0c29;
+}
+
+.info-section-text {
+  font-size: 14px;
+}
+.info-section-text .info-quote {
+  font-style: italic;
+}
+
+.extra-icon {
+  color: #ec0c29;
+  font-size: 16px;
+  margin-top: 3px;
+}
+.extra-icon:hover {
+  cursor: pointer;
+}
+
+.code-extra .popover {
+  background-color: black;
+}
+.code-extra .popover .popover-body {
+  color: lime;
+  font-family: monospace;
+}
+.code-extra .bs-popover-bottom .arrow::after {
+  border-bottom-color: black;
+}
+
+.popover img {
+  width: 100%;
+  height: auto;
+}
+
+#true-images, #puzzle {
+  transition: opacity 5s linear;
+}
+
+#true-images {
+  position: relative;
+}
+#true-images .miniature {
+  position: absolute;
+}
+#true-images .miniature img {
+  height: 50vh;
+  width: auto;
 }
 
 /*# sourceMappingURL=main.css.map */
