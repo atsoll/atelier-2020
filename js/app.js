@@ -15,12 +15,12 @@ app.controller('ctrl', function($scope, $window, $document,  $location, $timeout
       {
         steps: 6,
         images: [
-          {x:"15%", y:"15vh", steps:["/assets/clusters/préville/1/1.png", "/assets/clusters/préville/1/2.png", "/assets/clusters/préville/1/3.png", "/assets/clusters/préville/1/4.png", "/assets/clusters/préville/1/5.png", "/assets/clusters/préville/1/6.png"]},
-          {x:"55%", y:"15vh", steps:["/assets/clusters/préville/2/1.png", "/assets/clusters/préville/2/2.png", "/assets/clusters/préville/2/3.png", "/assets/clusters/préville/2/4.png", "/assets/clusters/préville/2/5.png", "/assets/clusters/préville/2/6.png"]}
+          {x:"15%", y:"15vh", steps:["/assets/clusters/preville/1/1.png", "/assets/clusters/preville/1/2.png", "/assets/clusters/preville/1/3.png", "/assets/clusters/preville/1/4.png", "/assets/clusters/preville/1/5.png", "/assets/clusters/preville/1/6.png"]},
+          {x:"55%", y:"15vh", steps:["/assets/clusters/preville/2/1.png", "/assets/clusters/preville/2/2.png", "/assets/clusters/preville/2/3.png", "/assets/clusters/preville/2/4.png", "/assets/clusters/preville/2/5.png", "/assets/clusters/preville/2/6.png"]}
         ],
-        templates:[{x:"4%", y:"55vh", src:"/assets/clusters/préville/templates/1.html"}, {x:"45%", y:"3vh", src:"/assets/clusters/préville/templates/2.html"}, {x:"2vh", y:"2vh", src:""}, {x:"2vh", y:"2vh", src:""}, {x:"2vh", y:"2vh", src:""}, {x:"2vh", y:"2vh", src:""}],
-        paintings: [{x:"15%", y:"20vh", src:"/assets/clusters/préville/1/miniature.jpeg"}, {x:"55%", y:"20vh", src:"/assets/clusters/préville/2/miniature.jpeg"}],
-        audio: new Audio('/assets/clusters/préville/replique_preville.mp3'),
+        templates:[{x:"4%", y:"55vh", src:"/assets/clusters/preville/templates/1.html"}, {x:"45%", y:"3vh", src:"/assets/clusters/preville/templates/2.html"}, {x:"2vh", y:"2vh", src:""}, {x:"2vh", y:"2vh", src:""}, {x:"2vh", y:"2vh", src:""}, {x:"2vh", y:"2vh", src:""}],
+        paintings: [{x:"15%", y:"20vh", src:"/assets/clusters/preville/1/miniature.jpeg"}, {x:"55%", y:"20vh", src:"/assets/clusters/preville/2/miniature.jpeg"}],
+        audio: new Audio('/assets/clusters/preville/replique_preville.mp3'),
         //will probably need to add something for transition
       }
     ],
