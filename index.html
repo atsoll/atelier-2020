@@ -59,7 +59,7 @@
         </div>
         <div id="true-images" ng-style="{opacity: model.active_cluster && model.active_cluster.showOriginals? '1' :'0' }">
           <div ng-repeat="image in model.active_cluster.data.paintings" ng-style="elem_coords(image)" class="miniature">
-            <img ng-src="{{image.src}}"/>
+            <img ng-src="{{image.src}}" ng-style="{height:image.height}"/>
           </div>
         </div>
         <div ng-if="model.active_cluster && (model.active_cluster.data.steps==model.active_cluster.clicks)" class="audio-trigger">

@@ -2,26 +2,46 @@ var app = angular.module('atelier2020',['ngAnimate', 'ngSanitize', 'ui.bootstrap
 
 app.controller('ctrl', function($scope, $window, $document,  $location, $timeout, $sce) {
   $scope.model = {
-    entered:false,
+    entered:true,//false,
     started_intro: false,
     done_intro: false,
     ambient: new Audio("assets/ambient_sound_short.mp3"),
     landing: [{img: "assets/preville_cluster.png", red:"assets/preville_cluster_red.png", cur:"assets/preville_cluster.png", style:{left:'15%', top:'59%', height:'18.5vh'}},
+              {img: "assets/clairon_cluster.png", red:"assets/clairon_cluster_red.png", cur:"assets/clairon_cluster.png", style:{left:'42%', top:'57.5%', height:'21.5vh'}},
               {img: "assets/oedipe_cluster.png", red:"assets/oedipe_cluster_red.png", cur:"assets/oedipe_cluster.png", style:{right:'15.5%', top:'57%', height: '18.5vh'}},
-              {img: "assets/clairon_cluster.png", red:"assets/clairon_cluster_red.png", cur:"assets/clairon_cluster.png", style:{left:'42%', top:'57.5%', height:'21.5vh'}}
             ],
 
     clusters: [
       {
         steps: 6,
         images: [
-          {x:"15%", y:"15vh", steps:["assets/clusters/preville/1/1.png", "assets/clusters/preville/1/2.png", "assets/clusters/preville/1/3.png", "assets/clusters/preville/1/4.png", "assets/clusters/preville/1/5.png", "assets/clusters/preville/1/6.png"]},
-          {x:"55%", y:"15vh", steps:["assets/clusters/preville/2/1.png", "assets/clusters/preville/2/2.png", "assets/clusters/preville/2/3.png", "assets/clusters/preville/2/4.png", "assets/clusters/preville/2/5.png", "assets/clusters/preville/2/6.png"]}
+          {x:"15%", y:"15vh", steps:["assets/clusters/preville/rissolle/1.png", "assets/clusters/preville/rissolle/2.png", "assets/clusters/preville/rissolle/3.png", "assets/clusters/preville/rissolle/4.png", "assets/clusters/preville/rissolle/5.png", "assets/clusters/preville/rissolle/6.png"]},
+          {x:"55%", y:"15vh", steps:["assets/clusters/preville/boniface/1.png", "assets/clusters/preville/boniface/2.png", "assets/clusters/preville/boniface/3.png", "assets/clusters/preville/boniface/4.png", "assets/clusters/preville/boniface/5.png", "assets/clusters/preville/boniface/6.png"]}
         ],
         templates:[{x:"4%", y:"55vh", src:"assets/clusters/preville/templates/1.html"}, {x:"45%", y:"3vh", src:"assets/clusters/preville/templates/2.html"}, {x:"2vh", y:"2vh", src:""}, {x:"2vh", y:"2vh", src:""}, {x:"2vh", y:"2vh", src:""}, {x:"2vh", y:"2vh", src:""}],
-        paintings: [{x:"15%", y:"20vh", src:"assets/clusters/preville/1/miniature.jpeg"}, {x:"55%", y:"20vh", src:"assets/clusters/preville/2/miniature.jpeg"}],
-        audio: new Audio('assets/clusters/preville/replique_preville.mp3'),
+        paintings: [{x:"15%", y:"20vh", height: '55vh', src:"assets/clusters/preville/rissolle/miniature.jpeg"}, {x:"55%", y:"20vh", height: '55vh', src:"assets/clusters/preville/boniface/miniature.jpeg"}],
+        audio: new Audio('assets/clusters/preville/replique.mp3'),
         //will probably need to add something for transition
+      },
+      {
+        steps:5,
+        images:[
+          {x: "18%", y:"15vh", steps:["assets/clusters/clairon_dumesnil/phedre/1.png", "assets/clusters/clairon_dumesnil/phedre/2.png", "assets/clusters/clairon_dumesnil/phedre/3.png", "assets/clusters/clairon_dumesnil/phedre/4.png", "assets/clusters/clairon_dumesnil/phedre/5.png"]},
+          {x:"55%", y:"18vh", steps:["assets/clusters/clairon_dumesnil/electre/1.png", "assets/clusters/clairon_dumesnil/electre/2.png", "assets/clusters/clairon_dumesnil/electre/3.png", "assets/clusters/clairon_dumesnil/electre/4.png", "assets/clusters/clairon_dumesnil/electre/5.png"]}
+        ],
+        templates:[],
+        paintings:[{x:"16%", y:"18vh", height:"60vh", src:"assets/clusters/clairon_dumesnil/phedre/miniature.jpg"}, {x:"55%", y:"18vh", height:"60vh", src:"assets/clusters/clairon_dumesnil/electre/miniature.jpg"}],
+        audio:new Audio("assets/clusters/clairon_dumesnil/replique.mp3")
+      },
+      {
+        steps: 7,
+        images:[
+          {x:"calc(25% + 40vh)", y:'12vh', steps:["assets/clusters/lekain_dumesnil/oedipe/1.png", "assets/clusters/lekain_dumesnil/oedipe/2.png", "assets/clusters/lekain_dumesnil/oedipe/3.png", "assets/clusters/lekain_dumesnil/oedipe/4.png", "assets/clusters/lekain_dumesnil/oedipe/5.png", "assets/clusters/lekain_dumesnil/oedipe/6.png", "assets/clusters/lekain_dumesnil/oedipe/7.png"]},
+          {x:'25%', y:'17vh', steps:["assets/clusters/lekain_dumesnil/jocaste/1.png", "assets/clusters/lekain_dumesnil/jocaste/2.png", "assets/clusters/lekain_dumesnil/jocaste/3.png", "assets/clusters/lekain_dumesnil/jocaste/4.png", "assets/clusters/lekain_dumesnil/jocaste/5.png", "assets/clusters/lekain_dumesnil/jocaste/6.png", "assets/clusters/lekain_dumesnil/jocaste/7.png"]}
+        ],
+        templates:[],
+        paintings:[{x:'23%', y:'4vh', height:'83vh', src:"assets/clusters/lekain_dumesnil/miniature.jpg"}],
+        audio:new Audio('assets/clusters/lekain_dumesnil/replique.mp3')
       }
     ],
     active_cluster:null
