@@ -75,7 +75,7 @@ html, body {
 }
 
 .info-visible {
-  opacity: 1;
+  opacity: 0.9;
   z-index:999;
   transition:  opacity 0.5s linear;
 }

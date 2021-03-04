@@ -2,7 +2,7 @@ var app = angular.module('atelier2020',['ngAnimate', 'ngSanitize', 'ui.bootstrap
 
 app.controller('ctrl', function($scope, $window, $document,  $location, $timeout, $sce) {
   $scope.model = {
-    entered:true,//false,
+    entered:false,
     started_intro: false,
     done_intro: false,
     ambient: new Audio("assets/ambient_sound_short.mp3"),
@@ -18,7 +18,7 @@ app.controller('ctrl', function($scope, $window, $document,  $location, $timeout
           {x:"15%", y:"15vh", steps:["assets/clusters/preville/rissolle/1.png", "assets/clusters/preville/rissolle/2.png", "assets/clusters/preville/rissolle/3.png", "assets/clusters/preville/rissolle/4.png", "assets/clusters/preville/rissolle/5.png", "assets/clusters/preville/rissolle/6.png"]},
           {x:"55%", y:"15vh", steps:["assets/clusters/preville/boniface/1.png", "assets/clusters/preville/boniface/2.png", "assets/clusters/preville/boniface/3.png", "assets/clusters/preville/boniface/4.png", "assets/clusters/preville/boniface/5.png", "assets/clusters/preville/boniface/6.png"]}
         ],
-        templates:[{x:"4%", y:"55vh", src:"assets/clusters/preville/templates/1.html"}, {x:"45%", y:"3vh", src:"assets/clusters/preville/templates/2.html"}, {x:"2vh", y:"2vh", src:""}, {x:"2vh", y:"2vh", src:""}, {x:"2vh", y:"2vh", src:""}, {x:"2vh", y:"2vh", src:""}],
+        templates:[{step:1, x:"4%", y:"55vh",src:"assets/clusters/preville/templates/1.html"}, {step:2, x:"45%", y:"3vh", src:"assets/clusters/preville/templates/2.html"}, {step:3, x:"5%", y:"60vh", src:"assets/clusters/preville/templates/3a.html"},{step:3, x:"55%", y:"2vh", src:"assets/clusters/preville/templates/3b.html"}, {x:"2vh", y:"2vh", src:""}, {x:"2vh", y:"2vh", src:""}, {x:"2vh", y:"2vh", src:""}],
         paintings: [{x:"15%", y:"20vh", height: '55vh', src:"assets/clusters/preville/rissolle/miniature.jpeg"}, {x:"55%", y:"20vh", height: '55vh', src:"assets/clusters/preville/boniface/miniature.jpeg"}],
         audio: new Audio('assets/clusters/preville/replique.mp3'),
         //will probably need to add something for transition

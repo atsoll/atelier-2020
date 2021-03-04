@@ -52,7 +52,7 @@
             </div>
           </div>
           <div ng-repeat="cluster in model.active_cluster.data.templates" ng-if="model.active_cluster.clicks<model.active_cluster.data.templates.length">
-            <div class="step-info"  ng-class="model.active_cluster.clicks ==  $index? 'info-visible':'info-invisible'" ng-style="elem_coords(model.active_cluster.data.templates[model.active_cluster.clicks])">
+            <div class="step-info"  ng-class="model.active_cluster.clicks ==  cluster.step-1? 'info-visible':'info-invisible'" ng-style="elem_coords(cluster)">
               <div ng-include="cluster.src" ng-cloak></div>
             </div>
           </div>
