@@ -21,7 +21,7 @@ app.controller('ctrl', function($scope, $window, $document,  $location, $timeout
         templates:[{step:1, x:"4%", y:"55vh", width: '45vw',src:"assets/clusters/preville/templates/1a.html"}, {step:1, x:"40%", y:"2vh", width: '55vw', src:"assets/clusters/preville/templates/1b.html"}, {step:2, x:"45%", y:"3vh", width:'45vw', src:"assets/clusters/preville/templates/2.html"}, {step:3, x:"5%", y:"60vh", width:'50vw', src:"assets/clusters/preville/templates/3a.html"},{step:3, x:"40%", y:"2vh", width:'50vw', src:"assets/clusters/preville/templates/3b.html"}, {x:"2vh", y:"2vh", src:""}, {x:"2vh", y:"2vh", src:""}, {x:"2vh", y:"2vh", src:""}],
         paintings: [{x:"15%", y:"20vh", height: '55vh', src:"assets/clusters/preville/rissolle/miniature.jpeg"}, {x:"55%", y:"20vh", height: '55vh', src:"assets/clusters/preville/boniface/miniature.jpeg"}],
         audio: new Audio('assets/clusters/preville/replique.mp3'),
-        //will probably need to add something for transition
+        transition: {src:'assets/transition_to_oedipe.png', red:'assets/transition_to_oedipe_red.png', text:'', class:'oedipe-transition', next_index:2 }
       },
       {
         steps:5,
@@ -31,7 +31,8 @@ app.controller('ctrl', function($scope, $window, $document,  $location, $timeout
         ],
         templates:[],
         paintings:[{x:"16%", y:"18vh", height:"60vh", src:"assets/clusters/clairon_dumesnil/phedre/miniature.jpg"}, {x:"55%", y:"18vh", height:"60vh", src:"assets/clusters/clairon_dumesnil/electre/miniature.jpg"}],
-        audio:new Audio("assets/clusters/clairon_dumesnil/replique.mp3")
+        audio:new Audio("assets/clusters/clairon_dumesnil/replique.mp3"),
+        transition: {src:'assets/transition_to_préville.png', red:'assets/transition_to_préville_red.png', text:'', class:'preville-transition', next_index:0 }
       },
       {
         steps: 7,
@@ -41,10 +42,11 @@ app.controller('ctrl', function($scope, $window, $document,  $location, $timeout
         ],
         templates:[],
         paintings:[{x:'23%', y:'4vh', height:'83vh', src:"assets/clusters/lekain_dumesnil/miniature.jpg"}],
-        audio:new Audio('assets/clusters/lekain_dumesnil/replique.mp3')
+        audio:new Audio('assets/clusters/lekain_dumesnil/replique.mp3'),
+        transition: {src:'assets/transition_to_phèdre.png', red:'assets/transition_to_phèdre_red.png', text:'', class:'phedre-transition', next_index:1 }
       }
     ],
-    active_cluster:null
+    active_cluster: null
   }
 
   angular.element($window).bind('mousemove', _.throttle(function(e){
@@ -101,9 +103,9 @@ app.controller('ctrl', function($scope, $window, $document,  $location, $timeout
 
   }
 
-  $scope.click_cluster = function(index) {
+  $scope.click_cluster = function(index, cl) {
     $scope.model.active_cluster = {
-      clicks:0,
+      clicks:cl,
       data: $scope.model.clusters[index]
     }
     //this should never be undefined at this stage, but this check is needed to not get errors onload

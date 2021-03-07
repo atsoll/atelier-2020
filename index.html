@@ -38,7 +38,7 @@
     <div class="view-wrapper" ng-class="model.entered && !model.active_cluster? 'visible' : 'invisible'">
       <div id="landing-page">
         <div ng-repeat = "group in model.landing" class="target-cluster">
-          <img ng-init="img=group.img" ng-mouseover="img=group.red" ng-mouseleave="img=group.img" ng-src='{{img}}' ng-style="group.style" class="cluster-img" ng-click="click_cluster($index)"/>
+          <img ng-init="img=group.img" ng-mouseover="img=group.red" ng-mouseleave="img=group.img" ng-src='{{img}}' ng-style="group.style" class="cluster-img" ng-click="click_cluster($index,0)"/>
         </div>
       </div>
     </div>
@@ -57,13 +57,16 @@
             </div>
           </div>
         </div>
-        <div id="true-images" ng-style="{opacity: model.active_cluster && model.active_cluster.showOriginals? '1' :'0' }">
+        <div id="true-images" ng-class="model.active_cluster && model.active_cluster.showOriginals? 'miniature-visible' :'miniature-invisible'">
           <div ng-repeat="image in model.active_cluster.data.paintings" ng-style="elem_coords(image)" class="miniature">
             <img ng-src="{{image.src}}" ng-style="{height:image.height}"/>
           </div>
         </div>
         <div ng-if="model.active_cluster && (model.active_cluster.data.steps==model.active_cluster.clicks)" class="audio-trigger">
           <div class="audio-blip" ng-click="play_cluster_audio()" ng-class="model.active_cluster.audio_playing? 'active-audio':'stopped-audio'"></div>
+        </div>
+        <div ng-if="model.active_cluster.exit" class="transition">
+          <img ng-init="img=model.active_cluster.data.transition.src" ng-mouseover="img=model.active_cluster.data.transition.red" ng-mouseleave="img=model.active_cluster.data.transition.src" ng-src='{{img}}' ng-click="click_cluster(model.active_cluster.data.transition.next_index, -1)" ng-class="model.active_cluster.data.transition.class"/>
         </div>
       </div>
     </div>

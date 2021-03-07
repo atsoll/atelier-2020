@@ -263,7 +263,7 @@ html, body {
   }
 }
 
-#true-images, #puzzle {
+#puzzle {
   transition: opacity 5s linear;
 }
 
@@ -275,4 +275,35 @@ html, body {
       width: auto
     }
   }
+}
+
+.miniature-visible {
+  opacity: 1;
+  transition: opacity 5s linear;
+}
+
+.miniature-invisible {
+  opacity: 0;
+}
+
+/*could use a sungle class, but keep these for now in case we want to use different transitions in future*/
+.phedre-transition, .oedipe-transition, .preville-transition{
+  position: absolute;
+  right: -17vw;
+  top: 15vh;
+  width: 16vw;
+  height: auto;
+  -webkit-animation: slide 1s forwards;
+  -webkit-animation-delay: 1.5s;
+  animation: slide 1s forwards;
+  animation-delay: 1.5s;
+}
+
+
+@-webkit-keyframes slide {
+    100% { right: 0; }
+}
+
+@keyframes slide {
+    100% { right: 0; }
 }
