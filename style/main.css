@@ -258,10 +258,10 @@ html, body {
   top: 15vh;
   width: 16vw;
   height: auto;
-  -webkit-animation: slide 1s forwards;
+  -webkit-animation: slide 1.5s forwards;
   -webkit-animation-delay: 1.5s;
-  animation: slide 1s forwards;
-  animation-delay: 1.5s;
+  animation: slide 1.2s forwards;
+  animation-delay: 1.2s;
 }
 
 @-webkit-keyframes slide {
@@ -273,6 +273,16 @@ html, body {
   100% {
     right: 0;
   }
+}
+#transition-quote {
+  font-size: 28px;
+  font-family: "Roboto Slab", serif;
+  position: absolute;
+  color: black;
+  top: 1vh;
+  width: 50%;
+  left: 45%;
+  text-align: right;
 }
 
 /*# sourceMappingURL=main.css.map */

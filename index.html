@@ -68,6 +68,7 @@
         <div ng-if="model.active_cluster.exit" class="transition">
           <img ng-init="img=model.active_cluster.data.transition.src" ng-mouseover="img=model.active_cluster.data.transition.red" ng-mouseleave="img=model.active_cluster.data.transition.src" ng-src='{{img}}' ng-click="click_cluster(model.active_cluster.data.transition.next_index, -1)" ng-class="model.active_cluster.data.transition.class"/>
         </div>
+        <div id="transition-quote" ng-if="model.active_cluster.exit"></div>
       </div>
     </div>
   </body>

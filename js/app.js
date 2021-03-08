@@ -2,7 +2,7 @@ var app = angular.module('atelier2020',['ngAnimate', 'ngSanitize', 'ui.bootstrap
 
 app.controller('ctrl', function($scope, $window, $document,  $location, $timeout, $sce) {
   $scope.model = {
-    entered:true,//false,
+    entered:false,
     started_intro: false,
     done_intro: false,
     ambient: new Audio("assets/ambient_sound_short.mp3"),
@@ -32,7 +32,7 @@ app.controller('ctrl', function($scope, $window, $document,  $location, $timeout
         templates:[],
         paintings:[{x:"16%", y:"18vh", height:"60vh", src:"assets/clusters/clairon_dumesnil/phedre/miniature.jpg"}, {x:"55%", y:"18vh", height:"60vh", src:"assets/clusters/clairon_dumesnil/electre/miniature.jpg"}],
         audio:new Audio("assets/clusters/clairon_dumesnil/replique.mp3"),
-        transition: {src:'assets/transition_to_préville.png', red:'assets/transition_to_préville_red.png', text:'', class:'preville-transition', next_index:0 }
+        transition: {src:'assets/transition_to_préville.png', red:'assets/transition_to_préville_red.png', text:'« Le don de plier son âme à des impressions contraires est encore plus nécessaire dans la comédie que dans la tragédie. »', class:'preville-transition', next_index:0 }
       },
       {
         steps: 7,
@@ -160,6 +160,21 @@ app.controller('ctrl', function($scope, $window, $document,  $location, $timeout
      $scope.model.active_cluster.audio_playing = false
      $scope.model.active_cluster.exit = true;
      $scope.$apply()
+
+     $timeout(function(){
+       console.log("hi")
+       var ele = '<span>' + $scope.model.active_cluster.data.transition.text.split('').join('</span><span>') + '</span>';
+
+       let cont = document.getElementById('transition-quote')
+       $(ele).hide().appendTo(cont).each(function (i) {
+           $(this).delay(40 * i).css({
+               display: 'inline',
+               opacity: 0
+           }).animate({
+               opacity: 1
+           }, 40);
+       });
+     }, 700)
    });
   }
 
