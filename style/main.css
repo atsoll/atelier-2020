@@ -259,9 +259,9 @@ html, body {
   width: 16vw;
   height: auto;
   -webkit-animation: slide 1.5s forwards;
-  -webkit-animation-delay: 1.5s;
-  animation: slide 1.2s forwards;
-  animation-delay: 1.2s;
+  -webkit-animation-delay: 0.8s;
+  animation: slide 1.5s forwards;
+  animation-delay: 0.8s;
 }
 
 @-webkit-keyframes slide {
@@ -275,7 +275,7 @@ html, body {
   }
 }
 #transition-quote {
-  font-size: 28px;
+  font-size: 25px;
   font-family: "Roboto Slab", serif;
   position: absolute;
   color: black;

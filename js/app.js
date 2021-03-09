@@ -19,9 +19,9 @@ app.controller('ctrl', function($scope, $window, $document,  $location, $timeout
           {x:"55%", y:"15vh", steps:["assets/clusters/preville/boniface/1.png", "assets/clusters/preville/boniface/2.png", "assets/clusters/preville/boniface/3.png", "assets/clusters/preville/boniface/4.png", "assets/clusters/preville/boniface/5.png", "assets/clusters/preville/boniface/6.png"]}
         ],
         templates:[{step:1, x:"4%", y:"55vh", width: '45vw',src:"assets/clusters/preville/templates/1a.html"}, {step:1, x:"40%", y:"2vh", width: '55vw', src:"assets/clusters/preville/templates/1b.html"}, {step:2, x:"45%", y:"3vh", width:'45vw', src:"assets/clusters/preville/templates/2.html"}, {step:3, x:"5%", y:"60vh", width:'50vw', src:"assets/clusters/preville/templates/3a.html"},{step:3, x:"40%", y:"2vh", width:'50vw', src:"assets/clusters/preville/templates/3b.html"}, {x:"2vh", y:"2vh", src:""}, {x:"2vh", y:"2vh", src:""}, {x:"2vh", y:"2vh", src:""}],
-        paintings: [{x:"15%", y:"20vh", height: '55vh', src:"assets/clusters/preville/rissolle/miniature.jpeg"}, {x:"55%", y:"20vh", height: '55vh', src:"assets/clusters/preville/boniface/miniature.jpeg"}],
+        paintings: [{x:"15%", y:"17vh", height: '60vh', src:"assets/clusters/preville/rissolle/miniature.jpeg"}, {x:"55%", y:"17vh", height: '60vh', src:"assets/clusters/preville/boniface/miniature.jpeg"}],
         audio: new Audio('assets/clusters/preville/replique.mp3'),
-        transition: {src:'assets/transition_to_oedipe.png', red:'assets/transition_to_oedipe_red.png', text:'', class:'oedipe-transition', next_index:2 }
+        transition: {src:'assets/transition_to_oedipe.png', red:'assets/transition_to_oedipe_red.png', text:"« L'âme est la première partie du comédien ; l'intelligence, la seconde ; la vérité et la chaleur du débit, la troisième ; la grâce et le dessin du corps, la quatrième. »", class:'oedipe-transition', next_index:2 }
       },
       {
         steps:5,
@@ -37,13 +37,13 @@ app.controller('ctrl', function($scope, $window, $document,  $location, $timeout
       {
         steps: 7,
         images:[
-          {x:"calc(25% + 40vh)", y:'12vh', steps:["assets/clusters/lekain_dumesnil/oedipe/1.png", "assets/clusters/lekain_dumesnil/oedipe/2.png", "assets/clusters/lekain_dumesnil/oedipe/3.png", "assets/clusters/lekain_dumesnil/oedipe/4.png", "assets/clusters/lekain_dumesnil/oedipe/5.png", "assets/clusters/lekain_dumesnil/oedipe/6.png", "assets/clusters/lekain_dumesnil/oedipe/7.png"]},
-          {x:'25%', y:'17vh', steps:["assets/clusters/lekain_dumesnil/jocaste/1.png", "assets/clusters/lekain_dumesnil/jocaste/2.png", "assets/clusters/lekain_dumesnil/jocaste/3.png", "assets/clusters/lekain_dumesnil/jocaste/4.png", "assets/clusters/lekain_dumesnil/jocaste/5.png", "assets/clusters/lekain_dumesnil/jocaste/6.png", "assets/clusters/lekain_dumesnil/jocaste/7.png"]}
+          {x:"calc(30% + 40vh)", y:'12vh', steps:["assets/clusters/lekain_dumesnil/oedipe/1.png", "assets/clusters/lekain_dumesnil/oedipe/2.png", "assets/clusters/lekain_dumesnil/oedipe/3.png", "assets/clusters/lekain_dumesnil/oedipe/4.png", "assets/clusters/lekain_dumesnil/oedipe/5.png", "assets/clusters/lekain_dumesnil/oedipe/6.png", "assets/clusters/lekain_dumesnil/oedipe/7.png"]},
+          {x:'30%', y:'17vh', steps:["assets/clusters/lekain_dumesnil/jocaste/1.png", "assets/clusters/lekain_dumesnil/jocaste/2.png", "assets/clusters/lekain_dumesnil/jocaste/3.png", "assets/clusters/lekain_dumesnil/jocaste/4.png", "assets/clusters/lekain_dumesnil/jocaste/5.png", "assets/clusters/lekain_dumesnil/jocaste/6.png", "assets/clusters/lekain_dumesnil/jocaste/7.png"]}
         ],
         templates:[],
-        paintings:[{x:'23%', y:'4vh', height:'83vh', src:"assets/clusters/lekain_dumesnil/miniature.jpg"}],
+        paintings:[{x:'28%', y:'4vh', height:'83vh', src:"assets/clusters/lekain_dumesnil/miniature.jpg"}],
         audio:new Audio('assets/clusters/lekain_dumesnil/replique.mp3'),
-        transition: {src:'assets/transition_to_phèdre.png', red:'assets/transition_to_phèdre_red.png', text:'', class:'phedre-transition', next_index:1 }
+        transition: {src:'assets/transition_to_phèdre.png', red:'assets/transition_to_phèdre_red.png', text:"« Ces grandes affections de l'âme sont les mêmes d'un pôle à l'autre, parce qu'elles entrent dans l'organisation de l'homme, ouvrage du Créateur. »", class:'phedre-transition', next_index:1 }
       }
     ],
     active_cluster: null
@@ -161,18 +161,22 @@ app.controller('ctrl', function($scope, $window, $document,  $location, $timeout
      $scope.model.active_cluster.exit = true;
      $scope.$apply()
 
+
      $timeout(function(){
-       console.log("hi")
+
        var ele = '<span>' + $scope.model.active_cluster.data.transition.text.split('').join('</span><span>') + '</span>';
 
        let cont = document.getElementById('transition-quote')
+       while (cont.firstChild) {
+          cont.firstChild.remove()
+        }
        $(ele).hide().appendTo(cont).each(function (i) {
-           $(this).delay(40 * i).css({
+           $(this).delay(30 * i).css({
                display: 'inline',
                opacity: 0
            }).animate({
                opacity: 1
-           }, 40);
+           }, 30);
        });
      }, 700)
    });
