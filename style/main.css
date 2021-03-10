@@ -223,6 +223,9 @@ html, body {
   border-bottom-color: black;
 }
 
+.popover {
+  max-width: 600px !important;
+}
 .popover img {
   width: 100%;
   height: auto;
