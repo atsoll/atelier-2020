@@ -72,19 +72,20 @@ app.controller('ctrl', function($scope, $window, $document,  $location, $timeout
     $scope.model.ambient.loop = true
     $scope.model.ambient.volume= 0.08
     $scope.model.ambient.play()
+    $scope.model.intro_audio.pause()
   }
 
 
 
   $scope.play_intro = function(){
     $scope.model.started_intro = true;
-    var audio = new Audio("assets/c_biet.mp3")
-    audio.loop = false
-    audio.onended = function(){
+    $scope.model.intro_audio = new Audio("assets/c_biet.mp3")
+    $scope.model.intro_audio.loop = false
+    $scope.model.intro_audio.onended = function(){
       $scope.model.done_intro = true
       $scope.$apply()
     }
-    audio.play()
+    $scope.model.intro_audio.play()
     $timeout(function(){
       var content = 'Nous sommes là comme des passeurs ; nous ne sommes pas là pour donner des modèles.';
 

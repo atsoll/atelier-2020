@@ -31,7 +31,7 @@
         </div>
         <div class="button-container">
           <div class="audio-blip" ng-style="{opacity: model.done_intro? '0' : '1'}" ng-class="model.started_intro? 'active-audio':'stopped-audio'" ng-click="play_intro()"></div>
-          <div class="button" ng-click="enter()" ng-style="{opacity: !model.done_intro? '0' : '1'}">Entrer</div>
+          <div class="button" ng-click="enter()" ng-style="{opacity: !model.started_intro? '0' : '1'}">Entrer</div>
         </div>
       </div>
     </div>
