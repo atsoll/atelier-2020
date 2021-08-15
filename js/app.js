@@ -1,6 +1,7 @@
 var app = angular.module('atelier2020',['ngAnimate', 'ngSanitize', 'ui.bootstrap']);
 
 app.controller('ctrl', function($scope, $window, $document,  $location, $timeout, $sce) {
+  var truth_colours = {green:'rgba(23, 150, 17, 0.4)', yellow:'rgba(235, 192, 54, 0.4)', red:'rgba(236, 12, 41, 0.4)'}
   $scope.model = {
     entered:false,
     started_intro: false,
@@ -46,7 +47,8 @@ app.controller('ctrl', function($scope, $window, $document,  $location, $timeout
         transition: {src:'assets/transition_to_phèdre.png', red:'assets/transition_to_phèdre_red.png', text:"« Ces grandes affections de l'âme sont les mêmes d'un pôle à l'autre, parce qu'elles entrent dans l'organisation de l'homme, ouvrage du Créateur. »", class:'phedre-transition', next_index:1 }
       }
     ],
-    active_cluster: null
+    active_cluster: null,
+    truthiness: {}
   }
 
   angular.element($window).bind('mousemove', _.throttle(function(e){
@@ -181,6 +183,21 @@ app.controller('ctrl', function($scope, $window, $document,  $location, $timeout
        });
      }, 700)
    });
+  }
+
+  $scope.update_truthiness = function(elem_id, val) {
+
+    if(!$scope.model.truthiness[elem_id]) {
+      $scope.model.truthiness[elem_id] = {}
+    }
+      $scope.model.truthiness[elem_id][val] = $scope.model.truthiness[elem_id][val]? false : true //should accound for nulls
+      new_col = $scope.model.truthiness[elem_id][val] ? truth_colours[val] : 'rgba(0,0,0,0)'
+      full = new_col.replace("0.4", "1")
+      console.log(  $(`#${elem_id}`))
+      $(`#${elem_id} .truth-${val}`).css('background-color', new_col)
+      $(`#${elem_id} .tb-${val}`).css("box-shadow", `0px 0px 10px 2px ${full}`)
+      $(`#${elem_id} .tb-${val}`).css("-webkit-box-shadow", `0px 0px 10px 2px ${full}`)
+      $(`#${elem_id} .tb-${val}`).css("-moz-box-shadow", `0px 0px 10px 2px ${full}`)
   }
 
 
