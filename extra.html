@@ -1,21 +1,21 @@
 <span ng-if="code" class="code-extra">
   <b>
   <span ng-transclude></span>
-  <span uib-popover="{{code}}" popover-placement="{{position}}" popover-animantion="true"><sup><i class="extra-icon fas fa-code"></i><sup></span>
+  <span uib-popover="{{code}}" popover-placement="{{position}}" popover-animantion="true" popover-trigger=" 'outsideClick' "><sup><i class="extra-icon fas fa-code"></i><sup></span>
   </b>
 </span>
 
 <span ng-if="image">
   <b>
   <span ng-transclude></span>
-  <span uib-popover-html="image" popover-placement="{{position}}" popover-animantion="true"><i class="extra-icon fas fa-eye"></i>
+  <span uib-popover-html="image" popover-placement="{{position}}" popover-animantion="true" popover-trigger=" 'outsideClick' "><i class="extra-icon fas fa-eye"></i>
   </b>
 </span>
 
 <span ng-if="quote">
   <b>
   <span ng-transclude></span>
-  <span uib-popover-html="quote"  popover-placement="{{position}}" popover-animantion="true"><sup><i class="extra-icon fas fa-book"></i><sup></span>
+  <span uib-popover-html="quote"  popover-placement="{{position}}" popover-animantion="true" popover-trigger=" 'outsideClick' "><sup><i class="extra-icon fas fa-book"></i><sup></span>
   <b>
 </span>
 

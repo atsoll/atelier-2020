@@ -164,7 +164,7 @@ html, body {
       color: #ec0c29; }
 
 .info-section-text {
-  font-size: 14px; }
+  font-size: 15px; }
   .info-section-text .info-quote {
     font-style: italic; }
 
@@ -184,7 +184,8 @@ html, body {
   border-bottom-color: black; }
 
 .popover {
-  max-width: 600px !important; }
+  max-width: 600px !important;
+  z-index: 9999; }
   .popover img {
     width: 100%;
     height: auto; }
