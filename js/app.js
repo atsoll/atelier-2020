@@ -30,7 +30,7 @@ app.controller('ctrl', function($scope, $window, $document,  $location, $timeout
           {x: "18%", y:"15vh", steps:["assets/clusters/clairon_dumesnil/phedre/1.png", "assets/clusters/clairon_dumesnil/phedre/2.png", "assets/clusters/clairon_dumesnil/phedre/3.png", "assets/clusters/clairon_dumesnil/phedre/4.png", "assets/clusters/clairon_dumesnil/phedre/5.png"]},
           {x:"55%", y:"18vh", steps:["assets/clusters/clairon_dumesnil/electre/1.png", "assets/clusters/clairon_dumesnil/electre/2.png", "assets/clusters/clairon_dumesnil/electre/3.png", "assets/clusters/clairon_dumesnil/electre/4.png", "assets/clusters/clairon_dumesnil/electre/5.png"]}
         ],
-        templates:[],
+        templates:[{step:1, x:"1%", y:"2vh", width: '32vw',src:"assets/clusters/clairon_dumesnil/templates/1a.html"}, {step:1, x:"69%", y:"20vh", width: '30vw', src:"assets/clusters/clairon_dumesnil/templates/1b.html"}],
         paintings:[{x:"16%", y:"18vh", height:"60vh", src:"assets/clusters/clairon_dumesnil/phedre/miniature.jpg"}, {x:"55%", y:"18vh", height:"60vh", src:"assets/clusters/clairon_dumesnil/electre/miniature.jpg"}],
         audio:new Audio("assets/clusters/clairon_dumesnil/replique.mp3"),
         transition: {src:'assets/transition_to_préville.png', red:'assets/transition_to_préville_red.png', text:'« Le don de plier son âme à des impressions contraires est encore plus nécessaire dans la comédie que dans la tragédie. »', class:'preville-transition', next_index:0 }
