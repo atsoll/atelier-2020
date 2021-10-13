@@ -25,8 +25,8 @@
   <body>
     <div class="view-wrapper"  ng-class="!model.entered? 'visible' : 'invisible'">
       <div id="overlay">
-        <div id="quote-text">
-          <p id="quote-container"></p>
+        <div id="quotation-text">
+          <p id="quotation-container"></p>
           <div id="attribution" ng-style="{opacity: !model.done_intro? '0' : '1'}">Christian Biet, 1952-2020</div>
         </div>
         <div class="button-container">
@@ -45,8 +45,9 @@
     <div class="view-wrapper" ng-class="model.active_cluster? 'visible' : 'invisible'">
       <div id="cluster-overlay" ng-click="puzzle_click($event.target)">
         <div id="exit" ng-click="exit_cluster()" ng-show="model.active_cluster.exit"><i class="fa fa-times"></i></div>
-        <div id="puzzle" ng-style="{opacity: model.active_cluster.showOriginals? '0' :'1' }">
-          <div class="figure" ng-repeat="fig in model.active_cluster.data.images" ng-style="elem_coords(fig)">
+        <div id="puzzle" >
+          <div class="figure" ng-repeat="fig in model.active_cluster.data.images" ng-style="elem_coords(fig)" ng-class="model.active_cluster.data.videos[$index].show? 'puzzle-invisible' : 'puzzle-visible'">
+            {{$index}}
             <div class="image-stack">
               <img ng-repeat="img in fig.steps" ng-src="{{img}}" ng-style="{opacity: $index-1 < model.active_cluster.clicks? '1' : '0'}"/>
             </div>
@@ -57,18 +58,23 @@
             </div>
           </div>
         </div>
+        <div id="process-vids" >
+          <div ng-repeat="vid in model.active_cluster.data.videos"  >
+            <div ng-style="elem_coords(vid)" class="detail-vid"><video ng-src="{{vid.src}}" id="{{vid.id}}" ng-style="{height:vid.height}" class="vid-invisible"/></div>
+          </div>
+        </div>
         <div id="true-images" ng-class="model.active_cluster && model.active_cluster.showOriginals? 'miniature-visible' :'miniature-invisible'">
           <div ng-repeat="image in model.active_cluster.data.paintings" ng-style="elem_coords(image)" class="miniature">
             <img ng-src="{{image.src}}" ng-style="{height:image.height}"/>
           </div>
         </div>
         <div ng-if="model.active_cluster && (model.active_cluster.data.steps==model.active_cluster.clicks)" class="audio-trigger">
-          <div class="audio-blip" ng-click="play_cluster_audio()" ng-class="model.active_cluster.audio_playing? 'active-audio':'stopped-audio'"></div>
+          <div id="cluster-blip" class="audio-blip" ng-click="activate_cluster([10, 10])" ng-class="model.active_cluster.playing? 'active-audio':'stopped-audio'"></div>
         </div>
         <div ng-if="model.active_cluster.exit" class="transition">
           <img ng-init="img=model.active_cluster.data.transition.src" ng-mouseover="img=model.active_cluster.data.transition.red" ng-mouseleave="img=model.active_cluster.data.transition.src" ng-src='{{img}}' ng-click="click_cluster(model.active_cluster.data.transition.next_index, -1)" ng-class="model.active_cluster.data.transition.class"/>
         </div>
-        <div id="transition-quote" ng-if="model.active_cluster.exit"></div>
+        <div id="transition-quotation" ng-if="model.active_cluster.exit"></div>
       </div>
     </div>
   </body>

@@ -20,8 +20,8 @@ app.controller('ctrl', function($scope, $window, $document,  $location, $timeout
           {x:"55%", y:"15vh", steps:["assets/clusters/preville/boniface/1.png", "assets/clusters/preville/boniface/2.png", "assets/clusters/preville/boniface/3.png", "assets/clusters/preville/boniface/4.png", "assets/clusters/preville/boniface/5.png", "assets/clusters/preville/boniface/6.png"]}
         ],
         templates:[{step:1, x:"4%", y:"55vh", width: '45vw',src:"assets/clusters/preville/templates/1a.html"}, {step:1, x:"40%", y:"2vh", width: '55vw', src:"assets/clusters/preville/templates/1b.html"}, {step:2, x:"45%", y:"3vh", width:'45vw', src:"assets/clusters/preville/templates/2.html"}, {step:3, x:"5%", y:"60vh", width:'50vw', src:"assets/clusters/preville/templates/3a.html"},{step:3, x:"40%", y:"2vh", width:'50vw', src:"assets/clusters/preville/templates/3b.html"}, {x:"12.5%", y:"65vh", src:"assets/clusters/preville/templates/4.html" ,step:4, width:'75vw'}, {x:"30vw", y:"3vh", width:"65vw", src:"assets/clusters/preville/templates/5.html", step:5}, {x:"3vw", y:"4vh",width:"55vw", src:"assets/clusters/preville/templates/6.html", step:6}],
-        paintings: [{x:"15%", y:"17vh", height: '60vh', src:"assets/clusters/preville/rissolle/miniature.jpeg"}, {x:"55%", y:"17vh", height: '60vh', src:"assets/clusters/preville/boniface/miniature.jpeg"}],
-        audio: new Audio('assets/clusters/preville/replique.mp3'),
+        paintings: [ {x:"15%", y:"17vh", height: '60vh', src:"assets/clusters/preville/rissolle/miniature.jpeg"},  {x:"55%", y:"17vh", height: '60vh', src:"assets/clusters/preville/boniface/miniature.jpeg"}],
+        videos: [ {x:"15%", y:"17vh", height: '60vh', src:"assets/clusters/preville/rissolle/video.mp4", id:"vid-rissolle", audio:new Audio('assets/clusters/preville/rissolle/replique.mp3'), show:false}, {x:"55%", y:"17vh", height: '60vh', src:"assets/clusters/preville/boniface/video.mp4", id:'vid-boniface', audio:new Audio('assets/clusters/preville/boniface/replique.mp3'), show: false}],
         transition: {src:'assets/transition_to_oedipe.png', red:'assets/transition_to_oedipe_red.png', text:"« L'âme est la première partie du comédien ; l'intelligence, la seconde ; la vérité et la chaleur du débit, la troisième ; la grâce et le dessin du corps, la quatrième. »", class:'oedipe-transition', next_index:2 }
       },
       {
@@ -107,9 +107,16 @@ app.controller('ctrl', function($scope, $window, $document,  $location, $timeout
   }
 
   $scope.click_cluster = function(index, cl) {
+    if($scope.model.clusters[index].videos) {
+      for(let i=0;i<$scope.model.clusters[index].videos.length;i++) {
+        $scope.model.clusters[index].videos[i].show = false
+      }
+    }
+
     $scope.model.active_cluster = {
       clicks:cl,
-      data: $scope.model.clusters[index]
+      data: $scope.model.clusters[index],
+      exit: false
     }
     //this should never be undefined at this stage, but this check is needed to not get errors onload
     if($scope.model.ambient) {
@@ -137,7 +144,7 @@ app.controller('ctrl', function($scope, $window, $document,  $location, $timeout
     }
   }
 
-  $scope.elem_coords = function(elem) {
+  $scope.elem_coords = function(elem, ind) {
     xy =  {left:elem.x, top:elem.y}
     if(elem.height) {
       xy.height = elem.height
@@ -152,38 +159,52 @@ app.controller('ctrl', function($scope, $window, $document,  $location, $timeout
         return Math.floor(Math.sqrt(Math.pow(mouseX - (elem[0].offsetLeft +(elem[0].clientWidth/2)), 2) + Math.pow(mouseY - (elem[0].offsetTop+(elem[0].clientHeight/2)), 2)));
   }
 
-  $scope.play_cluster_audio= function() {
-    $scope.model.active_cluster.data.audio.loop = false
-    $scope.model.active_cluster.data.audio.play()
-    $scope.model.active_cluster.audio_playing = true
-    $scope.model.active_cluster.showOriginals = true
 
-    $scope.model.active_cluster.data.audio.addEventListener("ended", function(){
-     $scope.model.active_cluster.data.audio.currentTime = 0;
-     $scope.model.active_cluster.audio_playing = false
-     $scope.model.active_cluster.exit = true;
-     $scope.$apply()
+  //hack, b/c video durations are being weird
+  $scope.activate_cluster= async function(durations) {
+    $scope.model.active_cluster.playing = true
+    for(let i=0;i<$scope.model.active_cluster.data.videos.length;i++) {
+      $scope.model.active_cluster.data.videos[i].show = true;
+      vid = document.getElementById($scope.model.active_cluster.data.videos[i].id)
+      $(`#${$scope.model.active_cluster.data.videos[i].id}`).removeClass('vid-invisible').addClass('vid-visible')
+      console.log($scope.model.active_cluster.data.videos[i])
+      vid.play();
+      $scope.model.active_cluster.data.videos[i].audio.loop= false;
+      $scope.model.active_cluster.data.videos[i].audio.play();
+      console.log(i, vid.duration, $scope.model.active_cluster.data.videos[i].audio.duration )
+      await new Promise(r => setTimeout(r, durations[i]*1000));
+      //sleep( Math.max(vid.duration, $scope.model.active_cluster.data.videos[i].audio.duration)*1000)
+      /*$timeout(function(){
+        $scope.$apply()
+      }, Math.max(vid.duration, $scope.model.active_cluster.data.videos[i].audio.duration)*1000)*/
+    }
+    $scope.model.active_cluster.showOriginals = true;
+    $('#cluster-blip').addClass('invisible')
+    $scope.model.active_cluster.exit = true;
+    $scope.model.active_cluster.audio_playing = false;
+    $scope.$apply()
+    $('.detail-vid').removeClass('vid-visible').addClass('vid-invisible')
+    $timeout(function(){
 
+      var ele = '<span>' + $scope.model.active_cluster.data.transition.text.split('').join('</span><span>') + '</span>';
 
-     $timeout(function(){
-
-       var ele = '<span>' + $scope.model.active_cluster.data.transition.text.split('').join('</span><span>') + '</span>';
-
-       let cont = document.getElementById('transition-quote')
-       while (cont.firstChild) {
-          cont.firstChild.remove()
-        }
-       $(ele).hide().appendTo(cont).each(function (i) {
-           $(this).delay(30 * i).css({
-               display: 'inline',
-               opacity: 0
-           }).animate({
-               opacity: 1
-           }, 30);
-       });
-     }, 700)
-   });
+      let cont = document.getElementById('transition-quotation')
+      console.log(cont)
+      while (cont.firstChild) {
+         cont.firstChild.remove()
+       }
+      $(ele).hide().appendTo(cont).each(function (i) {
+          $(this).delay(30 * i).css({
+              display: 'inline',
+              opacity: 0
+          }).animate({
+              opacity: 1
+          }, 30);
+      });
+    }, 2000)
   }
+
+
 
   $scope.update_truthiness = function(elem_id, val) {
 
