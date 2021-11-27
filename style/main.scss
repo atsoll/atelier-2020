@@ -13,7 +13,7 @@ html, body {
   position:relative;
 }
 
-.view-wrapper {
+.view-wrapper, .layer {
   position: absolute;
   top: 0px;
   left: 0px;
@@ -191,7 +191,7 @@ html, body {
 
   .puzzle-invisible {
     opacity: 0;
-    transition: opacity 1s linear;
+    transition: opacity 0.5s linear;
   }
 
   .audio-blip {
@@ -292,16 +292,20 @@ html, body {
   .miniature {
     position: absolute;
     img {
-      width: auto
+      width: auto;
     }
   }
 }
 
-#process-vids {
-  position: relative;
-  .detail-vid {
-    position: absolute;
-    overflow-y: hidden;
+.detail-vid {
+  position: absolute;
+  overflow-y: hidden;
+  width: 100%;
+  text-align: center;
+  padding-top: 5%;
+  video {
+    width: 80%;
+    height: auto;
   }
 }
 
@@ -313,16 +317,18 @@ html, body {
 
 .vid-invisible {
   opacity: 0;
-  transition: opacity 2s linear;
+  transition: opacity 0.5s linear;
 }
 
 .miniature-visible {
   opacity: 1;
-  transition: opacity 5s linear;
+  transition: opacity 4s linear;
+  transition-delay: 1s;
 }
 
 .miniature-invisible {
   opacity: 0;
+  transition: opacity 0.2s linear;
 }
 
 /*could use a sungle class, but keep these for now in case we want to use different transitions in future*/

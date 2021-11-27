@@ -21,29 +21,29 @@ app.controller('ctrl', function($scope, $window, $document,  $location, $timeout
         ],
         templates:[{step:1, x:"4%", y:"55vh", width: '45vw',src:"assets/clusters/preville/templates/1a.html"}, {step:1, x:"40%", y:"2vh", width: '55vw', src:"assets/clusters/preville/templates/1b.html"}, {step:2, x:"45%", y:"3vh", width:'45vw', src:"assets/clusters/preville/templates/2.html"}, {step:3, x:"5%", y:"60vh", width:'50vw', src:"assets/clusters/preville/templates/3a.html"},{step:3, x:"40%", y:"2vh", width:'50vw', src:"assets/clusters/preville/templates/3b.html"}, {x:"12.5%", y:"65vh", src:"assets/clusters/preville/templates/4.html" ,step:4, width:'75vw'}, {x:"30vw", y:"3vh", width:"65vw", src:"assets/clusters/preville/templates/5.html", step:5}, {x:"3vw", y:"4vh",width:"55vw", src:"assets/clusters/preville/templates/6.html", step:6}],
         paintings: [ {x:"15%", y:"17vh", height: '60vh', src:"assets/clusters/preville/rissolle/miniature.jpeg"},  {x:"55%", y:"17vh", height: '60vh', src:"assets/clusters/preville/boniface/miniature.jpeg"}],
-        videos: [ {x:"15%", y:"17vh", height: '60vh', src:"assets/clusters/preville/rissolle/video.mp4", id:"vid-rissolle", audio:new Audio('assets/clusters/preville/rissolle/replique.mp3'), show:false}, {x:"55%", y:"17vh", height: '60vh', src:"assets/clusters/preville/boniface/video.mp4", id:'vid-boniface', audio:new Audio('assets/clusters/preville/boniface/replique.mp3'), show: false}],
+        video: { src:"assets/clusters/preville/preville_vid.mp4", show:false, id:'vid-p'},
         transition: {src:'assets/transition_to_oedipe.png', red:'assets/transition_to_oedipe_red.png', text:"« L'âme est la première partie du comédien ; l'intelligence, la seconde ; la vérité et la chaleur du débit, la troisième ; la grâce et le dessin du corps, la quatrième. »", class:'oedipe-transition', next_index:2 }
       },
       {
-        steps:5,
+        steps:6,
         images:[
-          {x: "18%", y:"15vh", steps:["assets/clusters/clairon_dumesnil/phedre/1.png", "assets/clusters/clairon_dumesnil/phedre/2.png", "assets/clusters/clairon_dumesnil/phedre/3.png", "assets/clusters/clairon_dumesnil/phedre/4.png", "assets/clusters/clairon_dumesnil/phedre/5.png"]},
-          {x:"55%", y:"18vh", steps:["assets/clusters/clairon_dumesnil/electre/1.png", "assets/clusters/clairon_dumesnil/electre/2.png", "assets/clusters/clairon_dumesnil/electre/3.png", "assets/clusters/clairon_dumesnil/electre/4.png", "assets/clusters/clairon_dumesnil/electre/5.png"]}
+          {x: "18%", y:"15vh", steps:["assets/clusters/clairon_dumesnil/phedre/1.png", "assets/clusters/clairon_dumesnil/phedre/2.png", "assets/clusters/clairon_dumesnil/phedre/3.png", "assets/clusters/clairon_dumesnil/phedre/4.png", "assets/clusters/clairon_dumesnil/phedre/5.png", "assets/clusters/clairon_dumesnil/phedre/6.png"]},
+          {x:"55%", y:"15vh", steps:["assets/clusters/clairon_dumesnil/electre/1.png", "assets/clusters/clairon_dumesnil/electre/2.png", "assets/clusters/clairon_dumesnil/electre/3.png", "assets/clusters/clairon_dumesnil/electre/4.png", "assets/clusters/clairon_dumesnil/electre/5.png", "assets/clusters/clairon_dumesnil/electre/6.png"]}
         ],
-        templates:[{step:1, x:"1%", y:"1vh", width: '34vw',src:"assets/clusters/clairon_dumesnil/templates/1a.html"}, {step:1, x:"69%", y:"20vh", width: '30vw', src:"assets/clusters/clairon_dumesnil/templates/1b.html"}, {step:2, x:"10%", y:"3vh", width:'45vw', src:"assets/clusters/clairon_dumesnil/templates/2a.html"}, {step:2, x:"40%", y:"57vh", width:'45vw', src:"assets/clusters/clairon_dumesnil/templates/2b.html"}, {step:3, x:"5%", y:"57vh", width:'45vw', src:"assets/clusters/clairon_dumesnil/templates/3a.html"}, {step:3, x:"30%", y:"1vh", width:'47vw', src:"assets/clusters/clairon_dumesnil/templates/3b.html"}, {step:4, x:"10%", y:"2vh", width:'75vw', src:"assets/clusters/clairon_dumesnil/templates/4a.html"}, {step:4, x:"10%", y:"65vh", width:'75vw', src:"assets/clusters/clairon_dumesnil/templates/4b.html"}, {step:5, x:"7%", y:"55vh", width:'50vw', src:"assets/clusters/clairon_dumesnil/templates/5a.html"}, {step:5, x:"40%", y:"3vh", width:'45vw', src:"assets/clusters/clairon_dumesnil/templates/5b.html"}],
+        templates:[{step:1, x:"1%", y:"1vh", width: '50vw',src:"assets/clusters/clairon_dumesnil/templates/1a.html"}, {step:2, x:"69%", y:"20vh", width: '30vw', src:"assets/clusters/clairon_dumesnil/templates/2.html"}, {step:3, x:"10%", y:"3vh", width:'45vw', src:"assets/clusters/clairon_dumesnil/templates/3a.html"}, {step:3, x:"40%", y:"57vh", width:'45vw', src:"assets/clusters/clairon_dumesnil/templates/3b.html"}, {step:4, x:"5%", y:"57vh", width:'45vw', src:"assets/clusters/clairon_dumesnil/templates/4a.html"}, {step:4, x:"30%", y:"1vh", width:'47vw', src:"assets/clusters/clairon_dumesnil/templates/4b.html"}, {step:5, x:"10%", y:"2vh", width:'75vw', src:"assets/clusters/clairon_dumesnil/templates/5a.html"}, {step:5, x:"10%", y:"65vh", width:'75vw', src:"assets/clusters/clairon_dumesnil/templates/5b.html"}, {step:6, x:"7%", y:"55vh", width:'50vw', src:"assets/clusters/clairon_dumesnil/templates/6a.html"}, {step:6, x:"40%", y:"3vh", width:'45vw', src:"assets/clusters/clairon_dumesnil/templates/6b.html"}],
         paintings:[{x:"16%", y:"18vh", height:"60vh", src:"assets/clusters/clairon_dumesnil/phedre/miniature.jpg"}, {x:"55%", y:"18vh", height:"60vh", src:"assets/clusters/clairon_dumesnil/electre/miniature.jpg"}],
-        audio:new Audio("assets/clusters/clairon_dumesnil/replique.mp3"),
+        video: { src:"assets/clusters/clairon_dumesnil/clairon_dumesnil_vid.mp4", show:false, id:'vid-cl'},
         transition: {src:'assets/transition_to_préville.png', red:'assets/transition_to_préville_red.png', text:'« Le don de plier son âme à des impressions contraires est encore plus nécessaire dans la comédie que dans la tragédie. »', class:'preville-transition', next_index:0 }
       },
       {
         steps: 7,
         images:[
-          {x:"calc(30% + 40vh)", y:'12vh', steps:["assets/clusters/lekain_dumesnil/oedipe/1.png", "assets/clusters/lekain_dumesnil/oedipe/2.png", "assets/clusters/lekain_dumesnil/oedipe/3.png", "assets/clusters/lekain_dumesnil/oedipe/4.png", "assets/clusters/lekain_dumesnil/oedipe/5.png", "assets/clusters/lekain_dumesnil/oedipe/6.png", "assets/clusters/lekain_dumesnil/oedipe/7.png"]},
+          {x:"calc(30% + 40vh)", y:'15vh', steps:["assets/clusters/lekain_dumesnil/oedipe/1.png", "assets/clusters/lekain_dumesnil/oedipe/2.png", "assets/clusters/lekain_dumesnil/oedipe/3.png", "assets/clusters/lekain_dumesnil/oedipe/4.png", "assets/clusters/lekain_dumesnil/oedipe/5.png", "assets/clusters/lekain_dumesnil/oedipe/6.png", "assets/clusters/lekain_dumesnil/oedipe/7.png"]},
           {x:'30%', y:'17vh', steps:["assets/clusters/lekain_dumesnil/jocaste/1.png", "assets/clusters/lekain_dumesnil/jocaste/2.png", "assets/clusters/lekain_dumesnil/jocaste/3.png", "assets/clusters/lekain_dumesnil/jocaste/4.png", "assets/clusters/lekain_dumesnil/jocaste/5.png", "assets/clusters/lekain_dumesnil/jocaste/6.png", "assets/clusters/lekain_dumesnil/jocaste/7.png"]}
         ],
         templates:[],
         paintings:[{x:'28%', y:'4vh', height:'83vh', src:"assets/clusters/lekain_dumesnil/miniature.jpg"}],
-        audio:new Audio('assets/clusters/lekain_dumesnil/replique.mp3'),
+        video: { src:"assets/clusters/lekain_dumesnil/lekain_dumesnil_vid.mp4", show:false, id:"vid-ld"},
         transition: {src:'assets/transition_to_phèdre.png', red:'assets/transition_to_phèdre_red.png', text:"« Ces grandes affections de l'âme sont les mêmes d'un pôle à l'autre, parce qu'elles entrent dans l'organisation de l'homme, ouvrage du Créateur. »", class:'phedre-transition', next_index:1 }
       }
     ],
@@ -161,29 +161,16 @@ app.controller('ctrl', function($scope, $window, $document,  $location, $timeout
 
 
   //hack, b/c video durations are being weird
-  $scope.activate_cluster= async function(durations) {
+  $scope.activate_cluster= async function() {
     $scope.model.active_cluster.playing = true
-    for(let i=0;i<$scope.model.active_cluster.data.videos.length;i++) {
-      $scope.model.active_cluster.data.videos[i].show = true;
-      vid = document.getElementById($scope.model.active_cluster.data.videos[i].id)
-      $(`#${$scope.model.active_cluster.data.videos[i].id}`).removeClass('vid-invisible').addClass('vid-visible')
-      console.log($scope.model.active_cluster.data.videos[i])
-      vid.play();
-      $scope.model.active_cluster.data.videos[i].audio.loop= false;
-      $scope.model.active_cluster.data.videos[i].audio.play();
-      console.log(i, vid.duration, $scope.model.active_cluster.data.videos[i].audio.duration )
-      await new Promise(r => setTimeout(r, durations[i]*1000));
-      //sleep( Math.max(vid.duration, $scope.model.active_cluster.data.videos[i].audio.duration)*1000)
-      /*$timeout(function(){
-        $scope.$apply()
-      }, Math.max(vid.duration, $scope.model.active_cluster.data.videos[i].audio.duration)*1000)*/
-    }
+    $scope.model.active_cluster.data.video.show = true
+    vid = document.getElementById($scope.model.active_cluster.data.video.id)
+    vid.play()
+    await new Promise(r => setTimeout(r, vid.duration*1000-200));
+    $scope.model.active_cluster.data.video.show=false
     $scope.model.active_cluster.showOriginals = true;
     $('#cluster-blip').addClass('invisible')
     $scope.model.active_cluster.exit = true;
-    $scope.model.active_cluster.audio_playing = false;
-    $scope.$apply()
-    $('.detail-vid').removeClass('vid-visible').addClass('vid-invisible')
     $timeout(function(){
 
       var ele = '<span>' + $scope.model.active_cluster.data.transition.text.split('').join('</span><span>') + '</span>';
@@ -201,7 +188,7 @@ app.controller('ctrl', function($scope, $window, $document,  $location, $timeout
               opacity: 1
           }, 30);
       });
-    }, 2000)
+    }, 3000)
   }
 
 

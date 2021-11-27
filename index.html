@@ -45,27 +45,30 @@
     <div class="view-wrapper" ng-class="model.active_cluster? 'visible' : 'invisible'">
       <div id="cluster-overlay" ng-click="puzzle_click($event.target)">
         <div id="exit" ng-click="exit_cluster()" ng-show="model.active_cluster.exit"><i class="fa fa-times"></i></div>
-        <div id="puzzle" >
-          <div class="figure" ng-repeat="fig in model.active_cluster.data.images" ng-style="elem_coords(fig)" ng-class="model.active_cluster.data.videos[$index].show? 'puzzle-invisible' : 'puzzle-visible'">
-            {{$index}}
-            <div class="image-stack">
-              <img ng-repeat="img in fig.steps" ng-src="{{img}}" ng-style="{opacity: $index-1 < model.active_cluster.clicks? '1' : '0'}"/>
+        <div class="layer">
+          <div id="puzzle" >
+            <div class="figure" ng-repeat="fig in model.active_cluster.data.images" ng-style="elem_coords(fig)" ng-class="model.active_cluster.data.video.show? 'puzzle-invisible' : 'puzzle-visible'">
+              <div class="image-stack">
+                <img ng-repeat="img in fig.steps" ng-src="{{img}}" ng-style="{opacity: $index-1 < model.active_cluster.clicks? '1' : '0'}"/>
+              </div>
             </div>
-          </div>
-          <div ng-repeat="cluster in model.active_cluster.data.templates" ng-if="model.active_cluster.clicks<model.active_cluster.data.templates.length">
-            <div class="step-info"  ng-class="model.active_cluster.clicks ==  cluster.step-1? 'info-visible':'info-invisible'" ng-style="elem_coords(cluster)">
-              <div ng-include="cluster.src" ng-cloak></div>
+            <div ng-repeat="cluster in model.active_cluster.data.templates" ng-if="model.active_cluster.clicks<model.active_cluster.data.templates.length">
+              <div class="step-info"  ng-class="model.active_cluster.clicks ==  cluster.step-1? 'info-visible':'info-invisible'" ng-style="elem_coords(cluster)">
+                <div ng-include="cluster.src" ng-cloak></div>
+              </div>
             </div>
           </div>
         </div>
-        <div id="process-vids" >
-          <div ng-repeat="vid in model.active_cluster.data.videos"  >
-            <div ng-style="elem_coords(vid)" class="detail-vid"><video ng-src="{{vid.src}}" id="{{vid.id}}" ng-style="{height:vid.height}" class="vid-invisible"/></div>
+        <div class="layer">
+          <div id="process-vid" >
+            <div class="detail-vid"><video ng-src="{{model.active_cluster.data.video.src}}" ng-class="model.active_cluster.data.video.show? 'vid-visible':'vid-invisible'" id="{{model.active_cluster.data.video.id}}" type="video/mp4"/></div>
           </div>
         </div>
-        <div id="true-images" ng-class="model.active_cluster && model.active_cluster.showOriginals? 'miniature-visible' :'miniature-invisible'">
-          <div ng-repeat="image in model.active_cluster.data.paintings" ng-style="elem_coords(image)" class="miniature">
-            <img ng-src="{{image.src}}" ng-style="{height:image.height}"/>
+        <div class="layer">
+          <div id="true-images" ng-class="model.active_cluster && model.active_cluster.showOriginals? 'miniature-visible' :'miniature-invisible'">
+            <div ng-repeat="image in model.active_cluster.data.paintings" ng-style="elem_coords(image)" class="miniature">
+              <img ng-src="{{image.src}}" ng-style="{height:image.height}"/>
+            </div>
           </div>
         </div>
         <div ng-if="model.active_cluster && (model.active_cluster.data.steps==model.active_cluster.clicks)" class="audio-trigger">
@@ -74,7 +77,7 @@
         <div ng-if="model.active_cluster.exit" class="transition">
           <img ng-init="img=model.active_cluster.data.transition.src" ng-mouseover="img=model.active_cluster.data.transition.red" ng-mouseleave="img=model.active_cluster.data.transition.src" ng-src='{{img}}' ng-click="click_cluster(model.active_cluster.data.transition.next_index, -1)" ng-class="model.active_cluster.data.transition.class"/>
         </div>
-        <div id="transition-quotation" ng-if="model.active_cluster.exit"></div>
+        <div id="transition-quotation" ng-show="model.active_cluster.exit"></div>
       </div>
     </div>
   </body>
