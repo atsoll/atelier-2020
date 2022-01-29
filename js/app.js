@@ -30,7 +30,7 @@ app.controller('ctrl', function($scope, $window, $document,  $location, $timeout
           {x: "18%", y:"15vh", steps:["assets/clusters/clairon_dumesnil/phedre/1.png", "assets/clusters/clairon_dumesnil/phedre/2.png", "assets/clusters/clairon_dumesnil/phedre/3.png", "assets/clusters/clairon_dumesnil/phedre/4.png", "assets/clusters/clairon_dumesnil/phedre/5.png", "assets/clusters/clairon_dumesnil/phedre/6.png"]},
           {x:"55%", y:"15vh", steps:["assets/clusters/clairon_dumesnil/electre/1.png", "assets/clusters/clairon_dumesnil/electre/2.png", "assets/clusters/clairon_dumesnil/electre/3.png", "assets/clusters/clairon_dumesnil/electre/4.png", "assets/clusters/clairon_dumesnil/electre/5.png", "assets/clusters/clairon_dumesnil/electre/6.png"]}
         ],
-        templates:[{step:1, x:"1%", y:"1vh", width: '50vw',src:"assets/clusters/clairon_dumesnil/templates/1.html"}, {step:2, x:"69%", y:"20vh", width: '30vw', src:"assets/clusters/clairon_dumesnil/templates/2.html"}, {step:3, x:"10%", y:"3vh", width:'45vw', src:"assets/clusters/clairon_dumesnil/templates/3a.html"}, {step:3, x:"40%", y:"57vh", width:'45vw', src:"assets/clusters/clairon_dumesnil/templates/3b.html"}, {step:4, x:"5%", y:"57vh", width:'45vw', src:"assets/clusters/clairon_dumesnil/templates/4a.html"}, {step:4, x:"30%", y:"1vh", width:'47vw', src:"assets/clusters/clairon_dumesnil/templates/4b.html"}, {step:5, x:"10%", y:"2vh", width:'75vw', src:"assets/clusters/clairon_dumesnil/templates/5a.html"}, {step:5, x:"10%", y:"65vh", width:'75vw', src:"assets/clusters/clairon_dumesnil/templates/5b.html"}, {step:6, x:"7%", y:"55vh", width:'50vw', src:"assets/clusters/clairon_dumesnil/templates/6a.html"}, {step:6, x:"40%", y:"3vh", width:'45vw', src:"assets/clusters/clairon_dumesnil/templates/6b.html"}],
+        templates:[{step:1, x:"1%", y:"1vh", width: '50vw',src:"assets/clusters/clairon_dumesnil/templates/1.html"}, {step:2, x:"69%", y:"20vh", width: '30vw', src:"assets/clusters/clairon_dumesnil/templates/2.html"}, {step:3, x:"10%", y:"3vh", width:'45vw', src:"assets/clusters/clairon_dumesnil/templates/3a.html"}, {step:3, x:"40%", y:"57vh", width:'45vw', src:"assets/clusters/clairon_dumesnil/templates/3b.html"}, {step:4, x:"5%", y:"57vh", width:'45vw', src:"assets/clusters/clairon_dumesnil/templates/4a.html"}, {step:4, x:"37%", y:"1vh", width:'47vw', src:"assets/clusters/clairon_dumesnil/templates/4b.html"}, {step:5, x:"10%", y:"2vh", width:'75vw', src:"assets/clusters/clairon_dumesnil/templates/5a.html"}, {step:5, x:"10%", y:"65vh", width:'75vw', src:"assets/clusters/clairon_dumesnil/templates/5b.html"}, {step:6, x:"7%", y:"55vh", width:'50vw', src:"assets/clusters/clairon_dumesnil/templates/6a.html"}, {step:6, x:"40%", y:"3vh", width:'45vw', src:"assets/clusters/clairon_dumesnil/templates/6b.html"}],
         paintings:[{x:"16%", y:"18vh", height:"60vh", src:"assets/clusters/clairon_dumesnil/phedre/miniature.jpg"}, {x:"55%", y:"18vh", height:"60vh", src:"assets/clusters/clairon_dumesnil/electre/miniature.jpg"}],
         video: { src:"assets/clusters/clairon_dumesnil/clairon_dumesnil_vid.mp4", show:false, id:'vid-cl'},
         transition: {src:'assets/transition_to_préville.png', red:'assets/transition_to_préville_red.png', text:'« Le don de plier son âme à des impressions contraires est encore plus nécessaire dans la comédie que dans la tragédie. »', class:'preville-transition', next_index:0 }
@@ -60,11 +60,11 @@ app.controller('ctrl', function($scope, $window, $document,  $location, $timeout
     min = Math.min(...dists)
     if($scope.model.ambient) {
       if(min > 350) {
-        $scope.model.ambient.volume= 0.08
+        $scope.model.ambient.volume= 0//0.08 CHANGE BACK
       }
       else {
         perc = 1-min/350
-        $scope.model.ambient.volume= 0.9*perc
+        $scope.model.ambient.volume= 0//0.9*perc  CHANGE BACK
       }
     }
   }, 3))
@@ -72,7 +72,7 @@ app.controller('ctrl', function($scope, $window, $document,  $location, $timeout
   $scope.enter = function(){
     $scope.model.entered = true;
     $scope.model.ambient.loop = true
-    $scope.model.ambient.volume= 0.08
+    $scope.model.ambient.volume= 0//0.08 CHANGE BACK
     $scope.model.ambient.play()
     $scope.model.intro_audio.pause()
   }
