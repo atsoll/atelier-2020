@@ -60,11 +60,11 @@ app.controller('ctrl', function($scope, $window, $document,  $location, $timeout
     min = Math.min(...dists)
     if($scope.model.ambient) {
       if(min > 350) {
-        $scope.model.ambient.volume= 0//0.08 CHANGE BACK
+        $scope.model.ambient.volume= 0.1
       }
       else {
         perc = 1-min/350
-        $scope.model.ambient.volume= 0//0.9*perc  CHANGE BACK
+        $scope.model.ambient.volume= =0.9*perc
       }
     }
   }, 3))
@@ -72,7 +72,7 @@ app.controller('ctrl', function($scope, $window, $document,  $location, $timeout
   $scope.enter = function(){
     $scope.model.entered = true;
     $scope.model.ambient.loop = true
-    $scope.model.ambient.volume= 0//0.08 CHANGE BACK
+    $scope.model.ambient.volume= 0.1
     $scope.model.ambient.play()
     $scope.model.intro_audio.pause()
   }
