@@ -64,7 +64,7 @@ app.controller('ctrl', function($scope, $window, $document,  $location, $timeout
       }
       else {
         perc = 1-min/350
-        $scope.model.ambient.volume= =0.9*perc
+        $scope.model.ambient.volume= 0.9*perc
       }
     }
   }, 3))
