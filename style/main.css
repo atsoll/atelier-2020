@@ -284,4 +284,33 @@ html, body {
   .truthiness-buttons .tb-red {
     background-color: #ec0c29; }
 
+.modal-exit {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 25px;
+  color: #afafaf;
+  font-weight: 200; }
+  .modal-exit:hover {
+    color: #ec0c29; }
+
+#intro-content {
+  padding: 1% 2%;
+  width: 90%;
+  margin: auto; }
+
+.modal-content {
+  height: 90vh;
+  overflow-y: scroll;
+  padding: 5vh 15px 10vh 15px; }
+
+#desc-trigger {
+  font-size: 25px;
+  font-weight: 200;
+  position: absolute;
+  top: 2%;
+  right: 2%; }
+  #desc-trigger:hover {
+    color: #ec0c29; }
+
 /*# sourceMappingURL=main.css.map */

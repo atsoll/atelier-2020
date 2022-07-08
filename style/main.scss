@@ -22,10 +22,6 @@ html, body {
   height: 100%;
 }
 
-.view-wrapper {
-  margin-top: 15px;
-  margin-bottom: 15px;
-}
 
 .audio-blip {
   background: red;
@@ -240,7 +236,6 @@ html, body {
   border-radius: 5px;
   padding: 0.75%;
   position: absolute;
-  z-index:90;
 
   a {
     color: $rcf-red;
@@ -394,4 +389,39 @@ html, body {
   .tb-red {
     background-color: rgb(236, 12, 41);
   }
+}
+
+.modal-exit {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 25px;
+  color: rgb(175,175,175);
+  font-weight: 200;
+  &:hover {
+    color: $rcf-red;
+  }
+}
+
+#intro-content {
+  padding: 1% 2%;
+  width: 90%;
+  margin: auto;
+}
+
+.modal-content {
+ height: 90vh;
+ overflow-y: scroll;
+ padding: 5vh 15px 10vh 15px;
+}
+
+#desc-trigger {
+  font-size: 25px;
+  font-weight: 200;
+  &:hover {
+    color: $rcf-red;
+  }
+  position: absolute;
+  top: 2%;
+  right: 2%;
 }

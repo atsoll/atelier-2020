@@ -1,6 +1,6 @@
 var app = angular.module('atelier2020',['ngAnimate', 'ngSanitize', 'ui.bootstrap']);
 
-app.controller('ctrl', function($scope, $window, $document,  $location, $timeout, $sce) {
+app.controller('ctrl', function($scope, $window, $document,  $location, $timeout, $sce, $uibModal) {
   var truth_colours = {green:'rgba(23, 150, 17, 0.4)', yellow:'rgba(235, 192, 54, 0.4)', red:'rgba(236, 12, 41, 0.4)'}
   $scope.model = {
     entered:false,
@@ -206,6 +206,18 @@ app.controller('ctrl', function($scope, $window, $document,  $location, $timeout
       $(`#${elem_id} .tb-${val}`).css("box-shadow", `0px 0px 10px 2px ${full}`)
       $(`#${elem_id} .tb-${val}`).css("-webkit-box-shadow", `0px 0px 10px 2px ${full}`)
       $(`#${elem_id} .tb-${val}`).css("-moz-box-shadow", `0px 0px 10px 2px ${full}`)
+  }
+
+  $scope.openModal = function(url) {
+    $scope.model.modalInstance = $uibModal.open({
+       templateUrl: url,
+       scope: $scope,
+       size: 'lg'
+     });
+  }
+
+  $scope.closeModal = function() {
+    $scope.model.modalInstance.close();
   }
 
 

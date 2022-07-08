@@ -40,6 +40,7 @@
         <div ng-repeat = "group in model.landing" class="target-cluster">
           <img ng-init="img=group.img" ng-mouseover="img=group.red" ng-mouseleave="img=group.img" ng-src='{{img}}' ng-style="group.style" class="cluster-img" ng-click="click_cluster($index,0)"/>
         </div>
+        <div id="desc-trigger" ng-click="openModal('./intro.html')"><i class="fa fa-question"></i></div>
       </div>
     </div>
     <div class="view-wrapper" ng-class="model.active_cluster? 'visible' : 'invisible'">
