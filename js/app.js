@@ -93,7 +93,7 @@ app.controller('ctrl', function($scope, $window, $document,  $location, $timeout
 
       var ele = '<span>' + content.split('').join('</span><span>') + '</span>';
 
-      let cont = document.getElementById('quote-container')
+      let cont = document.getElementById('quotation-container')
       $(ele).hide().appendTo(cont).each(function (i) {
           $(this).delay(88 * i).css({
               display: 'inline',
@@ -166,7 +166,7 @@ app.controller('ctrl', function($scope, $window, $document,  $location, $timeout
     $scope.model.active_cluster.data.video.show = true
     vid = document.getElementById($scope.model.active_cluster.data.video.id)
     vid.play()
-    await new Promise(r => setTimeout(r, vid.duration*1000-200));
+    await new Promise(r => setTimeout(r, vid.duration*1000-300));
     $scope.model.active_cluster.data.video.show=false
     $scope.model.active_cluster.showOriginals = true;
     $('#cluster-blip').addClass('invisible')
@@ -188,7 +188,7 @@ app.controller('ctrl', function($scope, $window, $document,  $location, $timeout
               opacity: 1
           }, 30);
       });
-    }, 3000)
+    }, 3500)
   }
 
 
